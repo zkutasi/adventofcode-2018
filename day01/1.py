@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+import sys
+
 num = 0
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     if line[0] == '+':
       num += int(line[1:])

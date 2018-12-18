@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import re
+import sys
 
 rgx = re.compile('Step (.) must be finished before step (.) can begin.')
 
@@ -21,7 +22,7 @@ class Worker(object):
     return '.' if self.workingon is None else self.workingon.name
 
 steps = {}
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     a,b = rgx.split(line)[1:-1]
     if a not in steps:

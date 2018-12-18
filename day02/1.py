@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 def mapper(id):
   m = {}
   for c in id:
@@ -9,7 +11,7 @@ def mapper(id):
       m[c] = 1
   return m
 
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   doubles=0
   tripples=0
   for line in f.readlines():

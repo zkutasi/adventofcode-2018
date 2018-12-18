@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 def reacts(u1, u2):
   if u1 != u2 and u1.lower() == u2.lower():
     return True
@@ -54,7 +56,7 @@ class Elem(object):
     if next is not None:
       next.prev = self
 
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   poly = f.readlines()[0].strip()
   print "The size of the polymer is %d" % len(poly)
   chars = ''.join(set(poly.lower()))

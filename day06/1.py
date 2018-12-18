@@ -32,7 +32,7 @@ def print_test_world(test_world):
 
 world_size = 500
 locations = []
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for idx, line in enumerate(f.readlines()):
     x, y = [ int(c.strip()) for c in line.split(',') ]
     l = Loc(x, y, idx)

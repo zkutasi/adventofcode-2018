@@ -16,7 +16,7 @@ class Pot(object):
 
 rules = []
 plantstate = None
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in [ l.strip() for l in f.readlines() ]:
     if line.startswith('initial state'):
       plantstate = deque([ Pot(i,p) for i,p in enumerate(line.split(':')[1].strip()) ])
@@ -30,7 +30,7 @@ def plantstate_tostring(ps):
   return (''.join([ p.hasplant for p in ps ]), sum([ p.number for p in ps if p.hasplant == '#' ]))
 
 g = 0
-gmax = int(sys.argv[1])
+gmax = int(sys.argv[2])
 prevplantstatestr = (None, None)
 plantstatestr = plantstate_tostring(plantstate)
 plantstatestrings = []

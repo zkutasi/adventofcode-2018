@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import sys
+
 class Node(object):
   def __init__(self, children, meta):
     self.children = children
@@ -19,7 +21,7 @@ class Node(object):
       return value
 
 data = None
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     data = line.split()
     break

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import re
+import sys
 
 rgx = re.compile('#(\d+) @ (\d+),(\d+): (\d+)x(\d+)')
 
@@ -18,7 +19,7 @@ class Claim(object):
     self.height = int(self.height)
 
 claims = []
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   width = 0
   height = 0
   for line in f.readlines():

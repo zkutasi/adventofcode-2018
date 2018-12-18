@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+import sys
+
+def progress(s):
+  sys.stdout.write("%s\r" % s)
+  sys.stdout.flush()
+
 def reacts(u1, u2):
   if u1 != u2 and u1.lower() == u2.lower():
     return True
@@ -17,7 +23,7 @@ class Elem(object):
     if next is not None:
       next.prev = self
 
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     prev = None
     for c in line.strip():
@@ -41,22 +47,22 @@ with open('input.txt') as f:
     while curr.next is not None:
       if reacts(curr.unit, curr.next.unit):
         if curr.prev is None:
-          print "We are at the front..."
+          #print "We are at the front..."
           curr = curr.next.next
           first = curr
           curr.prev = None
         elif curr.next.next is None:
-          print "We are almost at the very end"
+          #print "We are almost at the very end"
           curr.prev.next = None
           curr = prev
         else:
-          print "We are somewhere in the middle"
+          #print "We are somewhere in the middle"
           curr.prev.next = curr.next.next
           curr.next.next.prev = curr.prev
           curr = curr.next.next
         shrunk = True
         size -= 2
-        print "Size is %d" % size
+        progress("Size is %d..." % size)
       else:
         curr = curr.next
         #print "Step one ahead... %s" % curr.unit

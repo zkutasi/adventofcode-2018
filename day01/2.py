@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
+import sys
 
 def loopfreq(freq, freqs):
   found = False
-  with open('input.txt') as f:
+  with open(sys.argv[1]) as f:
     for line in f.readlines():
       if line[0] == '+':
         freq += int(line[1:])

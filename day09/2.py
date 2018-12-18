@@ -59,7 +59,7 @@ def playgame(player, lastmarble):
     
 
 games = []
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     players, lastmarble = rgx.split(line)[1:-1]
     games += [ (players, lastmarble) ]

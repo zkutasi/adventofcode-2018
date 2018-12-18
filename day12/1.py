@@ -19,7 +19,7 @@ def hasplant(s):
 
 rules = []
 plantstate = None
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in [ l.strip() for l in f.readlines() ]:
     if line.startswith('initial state'):
       plantstate = deque([ Pot(i,p) for i,p in enumerate(line.split(':')[1].strip()) ])
@@ -32,7 +32,7 @@ def print_state(g):
   print "Generation %2d: %s" % (g, ''.join([ ('#' if p.hasplant else '.') for p in plantstate ]))
 
 g = 0
-gmax = int(sys.argv[1])
+gmax = int(sys.argv[2])
 while g<gmax:
   print_state(g)
   extended_pots = [ ('L', Pot(plantstate[0].number-4, '.')),

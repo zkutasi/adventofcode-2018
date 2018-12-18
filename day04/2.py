@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import re
+import sys
 
 rgx = re.compile('^\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})\] (.*)$')
 rgx_guardid = re.compile('Guard #(\d+) begins shift')
@@ -35,7 +36,7 @@ class Guard(object):
     self.sleepmatrix = 60*[0]
 
 events = []
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     events += [Event(line)]
 

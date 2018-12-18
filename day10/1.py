@@ -59,7 +59,7 @@ def print_test_world():
 
 
 points = []
-with open('input.txt') as f:
+with open(sys.argv[1]) as f:
   for line in f.readlines():
     px,py, vx,vy = rgx.split(line)[1:-1]
     points.append( Point( (int(px),int(py)), (int(vx),int(vy)) ) )
