@@ -74,7 +74,7 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 ## DAY 19
 * Part1 is simply reusing the program from DAY 16, and tailoring to the current problem
 * For Part2, observe patterns in the execution, and short-circuit them with register-rewritings. However, you need to understand the code executing in the loop to write the proper values into the registers, and into the right registers. It turned out that I had to factor an 8 digit number, and the code does a double-for loop and adds together all divisors or that number. Not sure how this could have been solved fully automatically.
-* For the above reasons, my solution contains hardcoded numbers, for my personal problem. One can modify this by start running the program, and observing the big number in one of the registers (R[5] for me), then rewrite all of the constants in the code, inclusing the prime divisors
+* For the above reasons, my solution contains hardcoded numbers, for my personal problem. One can modify this by start running the program, and observing the big number in one of the registers (R[5] for me), then rewrite all of the constants in the code, inclusing the prime divisors. There is a version that automatically does this for my input.
 
 ## DAY 20
 

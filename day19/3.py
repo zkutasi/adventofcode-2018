@@ -5,6 +5,7 @@ import sys
 import time
 from collections import defaultdict
 from collections import deque
+from math import sqrt, floor
 
 class Instr(object):
   def __init__(self, instr):
@@ -57,56 +58,39 @@ def print_state(ip_start, R_start, i, R):
                              R[0],R[1],R[2],R[3],R[4],R[5]
         )
 
+def get_divisors(n):
+  divs = deque([])
+  for d in range(int(floor(sqrt(n))), 0, -1):
+    if n % d ==0:
+      divs.appendleft(d)
+      divs.append(n/d)
+  return divs
+
+
+
+loop_to_check_list = deque([])
+def prepare_loopdetector(bignumber):
+  divisors = get_divisors(bignumber)
+  print "Divisors of %d are %s" % (bignumber, divisors)
+  for d in divisors:
+    loop_to_check_list.append( ( 3,
+                                 (0, 0, -1, 0, 0, 0),
+                                 ((2, bignumber/d), (4, d)))
+                             )
+  loop_to_check_list.append( ( 3,
+                               (0, 0, -1, 0, 0, 0),
+                               ((2, bignumber),))
+                           )
+  
+
 ip = 0
-bignumber = 10551381
-#primedivs = [3,71,49537]
-loop_to_check_list = deque([ ])
-
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/1), (4, 1)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/3), (4, 3)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/71), (4, 71)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/(3*71)), (4, 3*71)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/49537), (4, 49537)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/(3*49537)), (4, 3*49537)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/(71*49537)), (4, 71*49537))) )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber/(3*71*49537)), (4, bignumber)))
-                         )
-loop_to_check_list.append( ( 3,
-                             (0, 0, -1, 0, 0, 0),
-                             ((2, bignumber),))
-                         )
-
-if len(loop_to_check_list) > 0:
-  ltc = loop_to_check_list.popleft()
-else:
-  ltc = None
+bignumber = None
+ltc = None
 while ip >= 0 and ip < len(instr):
   ip_start = ip
   R_start = list(R)
   i = instr[ip]
-  if ltc is not None:
+  if bignumber is not None and ltc is not None:
     program_cache[ (ip_start, R_start[0],R_start[1],R_start[2],R_start[3],R_start[4],R_start[5]) ] = True
     is_cached = program_cache[ (ltc[0], R_start[0]+ltc[1][0],
                                         R_start[1]+ltc[1][1],
@@ -129,6 +113,10 @@ while ip >= 0 and ip < len(instr):
   R[i.C] = opcodes[i.name](R, i.A, i.B)
   ip = R[ipboundto]
   ip += 1
+  if ip == 1:
+    bignumber = R[5]
+    prepare_loopdetector(bignumber)
+    ltc = loop_to_check_list.popleft()
 
   if R[0] != R_start[0]:
     print "R[0] changed: "
