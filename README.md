@@ -18,7 +18,7 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 ## DAY 3
 
 ## DAY 4
-* Sort the events properly, and observe that the sorted events are fully there, none is missing, so the parsing of them is not hard and there are no edge cases
+* Sort the events properly, and observe that the sorted events are fully there, none is missing, so the parsing of them is not hard and there are no edge cases (multiple wakeups, no wakeup, etc...)
 
 ## DAY 5
 * This is not optimal, but quick enough for Part1.
@@ -30,51 +30,52 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * It is a tad slow, but runs in 10 seconds
 
 ## DAY 7
-* Used a unique graph representation for this type of problem with special notion of which STep depends on which other
+* Used a unique graph representation for this type of problem with special notion of which Step depends on which other. From here, a simple poke solves the entire graph.
 
 ## DAY 8
-* Once one figures out how to correctly read the input in, it is easy. Used recursion.
+* Once one figures out how to correctly read the input in, it is easy.
 
 ## DAY 9
-* Did not know deque at all, solved without it, and so it takes a bit long to finish, runs in a minute or so. Provided a deque implementation for comparison purposes.
+* Did not know deque, solved without it, and so it takes a bit long to finish, runs in a minute or so. Provided a deque implementation for comparison purposes and will use deque from now on as it is awesome.
 
 ## DAY 10
 * Did not consider automating it, so there are a few hardcoded values for my specific solution. Might do something about this later on.
 * Spent ages to get the projection right (visualize the sky on a fixed size dotted screen, with shrinking it down without distortion, automatically, in every step)
+* This challenge is very pleasing to the eye and heart, when suddenly the solution draws on screen :)
 
 ## DAY 11
-* Did not know the Summed Area Table structure before, but managed to come up with a very similar structure, you can see the evolution and the different approaches in later executables
+* Did not know the Summed Area Table structure before, but managed to come up with a very similar structure myself, you can see the evolution and the different approaches in later executables
 
 ## DAY 12
-* The trick here was that there is a pattern, shifting to infinity, and finding it, and finding the shift factor is key here, otherwise the implementation never finishes
+* The trick here was that there is a pattern, shifting to infinity, and finding it, and finding the shift factor is key here.
 
 ## DAY 13
-* The catch here was that the carts are not moving at the same time, on a tick, but one after another, and this results a different solution, so it was painful to realize this
+* The catch here was that the carts are not moving at the same time, on a tick, but one after another, and this results a different solution, so it was painful to realize this. Regardless of this nuance, the program solves the input, so nothing seems wrong.
 
 ## DAY 14
-* Catch here is if you check only the end of the list for the 10 digits, you will miss the solution, as at each iteration there is a possibility to increase by two, watch out for this
+* The catch here was that if you check only the end of the list for the 10 digits, you could(!) miss the solution, as at each iteration there is a possibility to increase by two, watch out for this, for my input, this was the case
 
 ## DAY 15
 * It is a bit slow, but VERY graphical, best challenge this year so far
-* Biggest catch was that Breath-First Search gives you shortest path in case all edges are equal, which is the case here
+* Biggest catch was that Breath-First Search gives you shortest path in case all edges are equal, which is the case here. Non need to rely on slower shortest algorithms
 * Also, reading order is very important, multiple times, to get the proper moves
 
 ## DAY 16
-* Decided not to use classes for this one, and it ended up being a good choice, used function-map instead
+* Decided not to use classes for this one, and it ended up being a good choice, used opcode-function-dictionary instead
 
 ## DAY 17
-* Tricky thing was to "simuate" the water, used a queue for this, and put the fresh water into it to get the flow
+* Tricky thing was to "simulate" the water, used a queue for this, and put the fresh water into it to get the flow, occasionally putting in water elements just to restart the calculation of the flow if required
 * Great visual challenge, however very hard to print on screen. Used a projection without any shrinkage
 * Misinterpreted the text as the water rises not always to the RIGHT, but only in the example, it raises always to the side the water comes into the clay. This could become tricky if in the clay there are multiple pours.
 
 ## DAY 18
-* Trick was to obsevre a repetition, so use a cache, and see from where there is a cycle. Then calculate with the cycle for 99.999 % of the time, as the actual calculations are rather slow
+* Trick was to observe a repetition in the execution, so use a cache, and see from where there is a cycle. Then calculate with the cycle for 99.999% of the time, as the actual calculations are rather slow
 * Very graphical challenge, great to look at
 
 ## DAY 19
 * Part1 is simply reusing the program from DAY 16, and tailoring to the current problem
 * For Part2, observe patterns in the execution, and short-circuit them with register-rewritings. However, you need to understand the code executing in the loop to write the proper values into the registers, and into the right registers. It turned out that I had to factor an 8 digit number, and the code does a double-for loop and adds together all divisors or that number. Not sure how this could have been solved fully automatically.
-* For the above reasons, my solution contains hardcoded numbers, for my personal problem. One can modify this by start running the program, and observing the big number in one of the registers (R[5] for me), then rewrite all of the constants in the code, inclusing the prime divisors. There is a version that automatically does this for my input.
+* For the above reasons, my solution contains hardcoded numbers, for my personal problem. One can modify this by start running the program, and observing the big number in one of the registers (R[5] for me), then rewrite all of the constants in the code, including the prime divisors. There is a version that automatically does this for my input.
 
 ## DAY 20
 
