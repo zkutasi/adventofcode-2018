@@ -79,6 +79,8 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * For the above reasons, my solution contains hardcoded numbers, for my personal problem. One can modify this by start running the program, and observing the big number in one of the registers (R[5] for me), then rewrite all of the constants in the code, including the prime divisors. There is a version that automatically does this for my input.
 
 ## DAY 20
+* It was tempting to do it the short way, with only parsing the input once, and figuring out the answer, which worked wurpirisingly well for Part1
+* I however have chosen to fully and properly solve it due to some corner cases (multiple paths present with shortest coming later, etc...). First calculating all the possible ways to traverse the map (reduce the regexp to a list of matching strings), then do a Breath-First Search for every endpoint from (0,0). From there, it is easy, we just need to extract the answers from the data.
 
 ## DAY 21
 
