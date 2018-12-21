@@ -83,6 +83,9 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * I however have chosen to fully and properly solve it due to some corner cases (multiple paths present with shortest coming later, etc...). First calculating all the possible ways to traverse the map (reduce the regexp to a list of matching strings), then do a Breath-First Search for every endpoint from (0,0). From there, it is easy, we just need to extract the answers from the data.
 
 ## DAY 21
+* Reuse code from DAY19, but rewrite the register-modification logic so that there is only one kind of loop in the program that can happen endlessly, and it has to be a register-dependent rewrite, so I ended using 'exec'
+* This also requires reverse engineering: observer how the program can end. Notice that only IP=28 uses R[0] for reading and otherwise R[0] takes no part in the execution, so that is the cornerpiece of the solution. One needs IP=28 --> IP=16. IP=16 is reachable if R[1]<256, so observe in the execution and determine how IP=28 at the end can provide the halt of the program.
+* For Part2, this needs to be further thought about: R[3] and R[0] is compared in order to halt the code, so you need an R[3] written into R[0] that gets you going the longest, so collect what numbers you have seen so far in R[3], and if you find a loop, you need to use the previous one to get the longest execution
 
 ## DAY 22
 
