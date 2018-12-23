@@ -88,6 +88,8 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * For Part2, this needs to be further thought about: R[3] and R[0] is compared in order to halt the code, so you need an R[3] written into R[0] that gets you going the longest, so collect what numbers you have seen so far in R[3], and if you find a loop, you need to use the previous one to get the longest execution
 
 ## DAY 22
+* Part1 only requires a naive approach with lots of calculations
+* Part2 was much harder: One would require a heap-queue of nodes, storing the nodes that made a distance shorter. Also the neighbor-calculation is custom, accomodating the tool-switch (Note that you can only switch to one other tool at a specific cell, and switch only if you absolutely need to, otherwise you should keep going, as it is the cheapest cost). Took me ages to fine-tune the algorithm, as none of the online Dijkstra variations are good, or usable here: One needs to avoid calling heapify, as it is very costly, and also one needs to visit Nodes multiple times, each time their cost reduces. For the state value, one needs to use also the tool that achieved that state, as it could turn out that another tool end up in a shorter distance. Ended up not returning prematurely, but printing out all of the solutions the algorithm provides.
 
 ## DAY 23
 
