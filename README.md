@@ -104,4 +104,4 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * One tricky thing is that there might be circumstances, where the battling armies are not inflicting any damage after a while, so an infinite loop can happen, and this of course means we have to keep boosting, as this solution will never gonna finish. This can be detected easily, and skipping to the next boost value.
 
 ## DAY 25
-
+* Ended up merging constellations in-place. Merry XMAS :D
