@@ -94,6 +94,10 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * Evaluation is as lazy as I could get it do be lazy
 
 ## DAY 23
+* Part1 is trivial
+* Part2 is one of the hardest this year (at least for me), as none of the solutions run quick or able to find the right answer. The world to search through is so huge (100Million cube), that the only way to look through it is by clever pruning, or a discrete optimization/heuristic solution
+* Ended up doing a scale-and-prune approach: scale the whole world down onto a manageable size first (couple 100-1000 cells), and divide it up to regions, and find which region(s) seem to be the one for the solution (there might be more than one, so keep all of the maximum ones for now). Then note these regions, and scale the world a bit larger, to sub-divide these regions and keep looking for the solution. Eventually, the answer will be found, as my input seems to not having too much candidates to keep looking at, so every region-loop is lookin gat less than 100 sub-regions, each with a sub-division of 10x10x10, so the whole thing is manageable (runs in 1-2 minutes though)
+* One thing to note here is the scaling math: since the problem uses Manhattan distance, one needs to keep in mind that in 3D, shrinking anything would require the manhattan distance (radius here) to be raised for each Dimension, to counter the rounding issues (+3 in 3D). This realization took me a whole day to figure out (but hey, it was Christmas eve :)).
 
 ## DAY 24
 
