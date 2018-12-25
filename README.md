@@ -100,6 +100,8 @@ These are my solutions for the Advent of Code 2018 Challenges (https://adventofc
 * One thing to note here is the scaling math: since the problem uses Manhattan distance, one needs to keep in mind that in 3D, shrinking anything would require the manhattan distance (radius here) to be raised for each Dimension, to counter the rounding issues (+3 in 3D). This realization took me a whole day to figure out (but hey, it was Christmas eve :)).
 
 ## DAY 24
+* Very nice OOP problem, EVERY sentence, EVERY word counts in the implementation
+* One tricky thing is that there might be circumstances, where the battling armies are not inflicting any damage after a while, so an infinite loop can happen, and this of course means we have to keep boosting, as this solution will never gonna finish. This can be detected easily, and skipping to the next boost value.
 
 ## DAY 25
 
